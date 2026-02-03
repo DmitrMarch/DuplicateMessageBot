@@ -1,0 +1,31 @@
+name: Deploy DuplicateMessageBot
+
+# Запуск на пуш в main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Получаем код репозитория
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Настраиваем SSH
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          # Добавляем сервер в known_hosts, чтобы не спрашивало подтверждение
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+      # Запускаем деплой на сервере
+      - name: Deploy to server
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }} \
+          "bash -l -c '~/DuplicateMessageBot/deploy.sh'"
