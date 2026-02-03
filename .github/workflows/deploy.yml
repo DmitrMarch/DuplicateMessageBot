@@ -27,5 +27,18 @@ jobs:
       # Запускаем деплой на сервере
       - name: Deploy to server
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }} \
-          "bash -l -c '~/DuplicateMessageBot/deploy.sh'"
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.USERNAME }}@${{ secrets.SERVER_IP }} '
+            set -e
+            mkdir -p ~/DuplicateMessageBot
+            cd ~/DuplicateMessageBot
+          
+            if [ ! -d ".git" ]; then
+                echo "Клонируем репозиторий"
+                git clone https://github.com/DmitrMarch/DuplicateMessageBot.git .
+            else
+                echo "Обновляем репозиторий"
+                git pull
+            fi
+          
+            bash deploy.sh
+          '
