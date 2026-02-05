@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Имя сервиса
-SERVICE_NAME=duplicatemessagebot.service
+SERVICE_NAME=duplicate-message-bot.service
 
 # ----------------------------
-# Обновление системы и зависимостей
+# Обновление системы и установка нужных пакетов
 # ----------------------------
 echo "Обновление системы и установка нужных пакетов"
 sudo apt update -y

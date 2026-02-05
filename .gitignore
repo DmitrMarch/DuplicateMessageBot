@@ -1,1 +1,4 @@
-.idea
+.idea/
+.venv/
+venv/
+vk_users.json
