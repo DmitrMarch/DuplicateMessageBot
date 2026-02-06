@@ -1,3 +1,5 @@
+from operator import index
+
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
 import vk_api
@@ -68,7 +70,11 @@ def resolve_entity(entity_id: int | str) -> dict:
         return {}
 
 def get_numeric_entity_id(entity_id: str) -> int:
-    entity_id = entity_id.strip().replace("@id", "").replace("@", "")
+    entity_id = entity_id.lstrip()
+    if "|" in entity_id:
+        entity_id = entity_id[1:entity_id.index("|")]
+    if entity_id.startswith("id"):
+        entity_id = entity_id.replace("id", "")
     if entity_id.isdigit() or is_negative(entity_id):
         return int(entity_id)
     entity_info = resolve_entity(entity_id)
