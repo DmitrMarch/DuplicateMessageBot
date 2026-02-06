@@ -2,3 +2,4 @@
 .venv/
 venv/
 vk_users.json
+.env
