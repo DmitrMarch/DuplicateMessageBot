@@ -1,5 +1,3 @@
-from operator import index
-
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
 import vk_api
