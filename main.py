@@ -153,6 +153,7 @@ while 1:
 
                 if cmd in COMMANDS:
                     COMMANDS[cmd](peer_id, arg)
+                    continue
 
             # Отслеживание сообщений ВК и отправка в ТГ
             if peer_id in VK_CHAT_IDS and user_id in vk_user_ids:
