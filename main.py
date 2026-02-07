@@ -159,7 +159,7 @@ while 1:
                 fullname = get_entity_fullname(user)
 
                 tg_msg = (
-                    f"Сообщение от пользователя <b>{fullname}</b>:\n"
+                    f"Сообщение от пользователя <b>{fullname}</b>\n"
                     f"<blockquote>{if_empty2attachment(text)}</blockquote>"
                 )
 
@@ -171,7 +171,7 @@ while 1:
                 vk_rpl_msg = message_data.get("reply_message", {})
 
                 if vk_fwd_msgs:
-                    tg_msg += "\n\nВложенные сообщения:\n<blockquote>"
+                    tg_msg += "\n\nВложенные сообщения\n<blockquote>"
                     for vk_fwd_msg in vk_fwd_msgs:
                         vk_fwd_entity_id = vk_fwd_msg["from_id"]
                         entity = resolve_entity(vk_fwd_entity_id)
@@ -187,7 +187,7 @@ while 1:
                     entity = resolve_entity(vk_rpl_entity_id)
                     fullname = get_entity_fullname(entity)
                     tg_msg += (
-                        f"\n\nВ ответ на сообщение <b>{fullname}</b>:\n"
+                        f"\n\nВ ответ на сообщение участника чата <b>{fullname}</b>\n"
                         f"<blockquote>"
                         f"{if_empty2attachment(vk_rpl_msg['text'])}"
                         "</blockquote>"
