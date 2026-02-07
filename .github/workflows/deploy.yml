@@ -1,10 +1,11 @@
 name: Deploy DuplicateMessageBot
 
-# Запуск на пуш в main
+# Запуск на пуш в main или вручную по кнопке из Github Actions
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:

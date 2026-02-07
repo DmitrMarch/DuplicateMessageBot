@@ -1,0 +1,17 @@
+# Пример сервисного файла для приложения
+
+[Unit]
+Description=DuplicateMessageBot Python App
+After=network.target
+
+[Service]
+Type=simple
+User=(user)
+WorkingDirectory=/home/(user)/DuplicateMessageBot
+EnvironmentFile=/home/(user)/DuplicateMessageBot/.env
+ExecStart=/home/(user)/DuplicateMessageBot/venv/bin/python main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
