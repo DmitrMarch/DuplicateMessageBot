@@ -4,5 +4,5 @@
 SERVICE_NAME=duplicate-message-bot.service
 
 # Остановка сервиса
-systemctl stop $SERVICE_NAME
-systemctl disable $SERVICE_NAME
+sudo systemctl stop $SERVICE_NAME
+sudo systemctl disable $SERVICE_NAME
