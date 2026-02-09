@@ -2,7 +2,7 @@
 set -e
 
 # Логирование сообщений и ошибок
-LOGFILE=logs/deploy.log
+LOGFILE=deploy.log
 exec >> "$LOGFILE" 2>&1
 
 echo "==== Deploy start: $(date) ===="
