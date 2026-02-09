@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+set -e
+
+# Логирование сообщений и ошибок
+LOGFILE=logs/deploy.log
+exec >> "$LOGFILE" 2>&1
+
+echo "==== Deploy start: $(date) ===="
 
 # Имя сервиса
 SERVICE_NAME=duplicate-message-bot.service
@@ -28,3 +35,4 @@ echo "Перезапуск systemd сервиса"
 systemctl restart $SERVICE_NAME
 
 echo "Deploy завершён"
+echo "==== Deploy end: $(date) ===="

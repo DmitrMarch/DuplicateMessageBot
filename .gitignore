@@ -1,5 +1,6 @@
 .idea/
 .venv/
 venv/
+logs/
 vk_users.json
 .env
