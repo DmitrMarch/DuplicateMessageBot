@@ -25,6 +25,6 @@ pip install -r requirements.txt
 # Перезапуск systemd сервиса
 # ----------------------------
 echo "Перезапуск systemd сервиса"
-sudo systemctl restart $SERVICE_NAME
+systemctl restart $SERVICE_NAME
 
 echo "Deploy завершён"
