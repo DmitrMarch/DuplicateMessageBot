@@ -1,3 +1,4 @@
+from telebot import apihelper
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
 import vk_api
@@ -35,6 +36,11 @@ def save_users(users: set) -> None:
 # Список айдишников отслеживаемых пользователей
 vk_user_ids = load_users()
 
+# Настройка socks5 прокси для Telegram BOT API
+# (можно раскомментировать, если нужен прокси)
+# apihelper.proxy = {
+#     'https': 'socks5h://127.0.0.1:1080'
+# }
 
 # Переменные с сессиями ботов
 VK_BOT = vk_api.VkApi(token=VK_DM_BOT_TOKEN)
